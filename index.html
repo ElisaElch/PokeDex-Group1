@@ -3,34 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Pokédex Diary</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              gold: "#C6A24A",
-              cream: "#FBF6E9",
-              cardcream: "#F6ECC9",
-              red: "#C0272D",
-              redlt: "#D8474D",
-              forest: "#1E3A2B",
-            },
-            fontFamily: {
-              display: ["Bungee", "sans-serif"],
-              name: ["Baloo 2", "sans-serif"],
-              body: ["Nunito", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-gold: #c6a24a;
+        --color-cream: #fbf6e9;
+        --color-cardcream: #f6ecc9;
+        --color-red: #c0272d;
+        --color-redlt: #d8474d;
+        --color-forest: #1e3a2b;
+        --font-display: "Bungee", sans-serif;
+        --font-name: "Baloo 2", sans-serif;
+        --font-body: "Nunito", sans-serif;
+      }
+    </style>
   </head>
   <body>
     <!-- header + nav bar with two elements -->
@@ -38,6 +31,6 @@
     <!-- search bar -->
     <!-- cards  -->
     <!-- footer -->
-   <script src="./src/main.js"></script>
+    <script src="./src/main.js"></script>
   </body>
 </html>
