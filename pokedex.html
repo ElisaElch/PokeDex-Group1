@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
@@ -30,12 +30,46 @@
         },
       };
     </script>
-    <title>Document</title>
+    <style>
+      body { background-color: #E9E9E9; font-family: 'Nunito', sans-serif; }
+      .page-frame { background: #FBF6E9; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+      .card { background: #F6ECC9; border: 3px solid #C6A24A; border-radius: 14px; }
+    </style>
+    <title>My Pokédex</title>
 </head>
-<body>
-      <!-- heading-->  
-    <!-- favourite cards with notes -->  
+<body class="p-6 md:p-12 max-w-5xl mx-auto">
+  <div class="page-frame">
+
+    <!-- heading -->
+    <header class="bg-cardcream border-b-2 border-gold px-8 py-6 flex items-center justify-between">
+      <h1 class="font-display text-xl md:text-2xl text-red">My Pokédex</h1>
+      <span id="caughtCount" class="font-name text-sm font-bold text-forest/60">0 caught</span>
+    </header>
+
+    <main class="p-8 space-y-8">
+
+      <!-- favourite cards with notes -->
+      <section id="pokedexGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- pokemon-card.js populates this grid at runtime -->
+      </section>
+
+      <!-- empty state, hidden unless the caught list is empty -->
+      <div id="emptyState" class="card p-8 text-center space-y-1 hidden" style="border-style: dashed;">
+        <p class="font-name text-base font-extrabold text-forest/70">Your Pokédex is empty!</p>
+        <p class="text-xs text-forest/50 font-semibold">Catch a Pokémon on the Homepage to start your collection.</p>
+      </div>
+
+    </main>
+
     <!-- footer -->
- <script src="./src/pokedex.js"></script>
+    <footer class="border-t-2 border-gold px-8 py-4 text-center">
+      <p class="text-[11px] font-body font-semibold text-forest/40">Pokédex Diary &middot; Data via PokéAPI</p>
+    </footer>
+
+  </div>
+
+  <script src="./src/pokemon-storage.js"></script>
+  <script src="./src/pokemon-card.js"></script>
+  <script src="./src/pokedex.js"></script>
 </body>
 </html>
