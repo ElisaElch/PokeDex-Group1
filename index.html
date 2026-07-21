@@ -29,6 +29,152 @@
     <!-- header + nav bar with two elements -->
     <!-- heading with a p-->
     <!-- search bar -->
+    <div class="text-center space-y-4 py-4">
+      <h1 class="font-display text-2xl md:text-3xl text-red">
+        Catch 'em & Log 'em
+      </h1>
+      <p class="font-body text-forest/60 text-sm">
+        Browse Pokémon, search for one by name or number, and catch your
+        favorites.
+      </p>
+      <div class="flex justify-center gap-2 max-w-md mx-auto pt-2">
+        <form id="SearchForm">
+          <input
+            id="searchInput"
+            type="text"
+            class="flex-1 bg-white/70 border-2 border-gold rounded-full px-4 py-2 text-sm font-body font-semibold"
+            placeholder="Search by name or Pokédex "
+          />
+          <button
+            class="bg-red text-cream px-5 py-2 rounded-full font-name text-sm font-bold shrink-0"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <dialog
+      id="myDialog"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cardcream border-4 border-gold rounded-2xl p-6 w-[90%] max-w-sm shadow-2xl [&::backdrop]:bg-forest/50 [&::backdrop]:backdrop-blur-sm"
+    >
+      <div>
+        <div class="card p-6 max-w-xs mx-auto space-y-3">
+          <p class="font-name font-extrabold text-sm">Result for "pikachu"</p>
+          <div
+            class="h-20 bg-white/50 rounded-lg flex items-center justify-center"
+          >
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+              class="h-16"
+            />
+          </div>
+          <p class="font-name text-lg font-extrabold text-center">Pikachu</p>
+          <button
+            id="closeBtn"
+            class="w-full bg-red text-cream py-2 rounded-full text-sm font-name font-bold"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <!-- pokemon grid -->
+      <div>
+        <p
+          class="font-name text-xs uppercase tracking-wide text-forest/50 font-bold mb-3"
+        >
+          All Pokémon
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="card p-4 space-y-2">
+            <p class="text-[10px] font-bold text-forest/40">#001</p>
+            <div
+              class="h-16 bg-white/50 rounded-lg flex items-center justify-center"
+            >
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                class="h-14"
+              />
+            </div>
+            <p class="font-name text-sm font-extrabold">Bulbasaur</p>
+            <p class="text-[10px] font-extrabold text-forest/60">
+              HP 45 · ATK 49
+            </p>
+          </div>
+
+          <div class="card p-4 space-y-2">
+            <p class="text-[10px] font-bold text-forest/40">#004</p>
+            <div
+              class="h-16 bg-white/50 rounded-lg flex items-center justify-center"
+            >
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                class="h-14"
+              />
+            </div>
+            <p class="font-name text-sm font-extrabold">Charmander</p>
+            <p class="text-[10px] font-extrabold text-forest/60">
+              HP 39 · ATK 52
+            </p>
+          </div>
+
+          <div class="card p-4 space-y-2 relative">
+            <span class="absolute top-3 right-3 text-gold text-sm">★</span>
+            <p class="text-[10px] font-bold text-forest/40">#007</p>
+            <div
+              class="h-16 bg-white/50 rounded-lg flex items-center justify-center"
+            >
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+                class="h-14"
+              />
+            </div>
+            <p class="font-name text-sm font-extrabold">Squirtle</p>
+            <p class="text-[10px] font-extrabold text-forest/60">
+              HP 44 · ATK 48
+            </p>
+          </div>
+
+          <div class="card p-4 space-y-2">
+            <p class="text-[10px] font-bold text-forest/40">#025</p>
+            <div
+              class="h-16 bg-white/50 rounded-lg flex items-center justify-center"
+            >
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                class="h-14"
+              />
+            </div>
+            <p class="font-name text-sm font-extrabold">Pikachu</p>
+            <p class="text-[10px] font-extrabold text-forest/60">
+              HP 35 · ATK 55
+            </p>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    <dialog
+      id="myDialogFailure"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cardcream border-4 border-gold rounded-2xl p-6 w-[90%] max-w-sm shadow-2xl [&::backdrop]:bg-forest/50 [&::backdrop]:backdrop-blur-sm"
+    >
+      <div>
+        <p
+          class="font-name text-xs uppercase tracking-wide text-forest/50 font-bold mb-3"
+        >
+          Search result dialog (opens on submit)
+        </p>
+        <div class="card p-6 max-w-xs mx-auto space-y-3">
+          <p class="font-name font-extrabold text-sm">
+            Wrong input: You have to enter at least a name or and ID"
+          </p>
+          <button
+            id="closeDialogFailureBtn"
+            class="w-full bg-red text-cream py-2 rounded-full text-sm font-name font-bold"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </dialog>
     <!-- cards  -->
     <!-- footer -->
     <script src="./src/main.js"></script>
