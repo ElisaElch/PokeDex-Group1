@@ -17,11 +17,25 @@ function createPokemonCard(pokemon) {
     const attack = pokemon.stats.find(s => s.stat.name === "attack").base_stat;
     card.querySelector("[data-stats]").textContent = `HP ${hp} · ATK ${attack}`;
 
-    card.querySelector("[data-catch-btn]").addEventListener("click", () => {
+    const catchBtn = card.querySelector("[data-catch-btn]")
+
+    const caught = JSON.parse(localStorage.getItem("caughtPokemon")) || [];
+    const isAlreadyCaught = caught.some(p => p.id === pokemon.id);
+
+    function markAsCaught(button) {
+        button.textContent = "Caught!"
+        button.classList.remove("bg-gold", "text-forest");
+        button.classList.add("bg-red", "text-cream")
+        button.disabled = true;
+    }
+
+    if (isAlreadyCaught) {
+        markAsCaught(catchBtn);
+    }
+
+    catchBtn.addEventListener("click", (event) => {
         catchPokemon(pokemon);
-        event.target.textContent = "Caught!";
-        event.target.classList.remove("bg-gold", "text-forest");
-        event.target.classList.add("bg-red", "text-cream");
+        markAsCaught(event.target);
     });
 
     return card; 
