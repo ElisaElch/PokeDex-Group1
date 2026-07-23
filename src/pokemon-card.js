@@ -3,7 +3,6 @@
  * Builds a single Pokémon card showing image, name, stats, an
  * editable note, and a Release button.
  */
-
 function renderPokemonCard(pokemon, onRelease) {
   const { id, name, sprite, hp, atk, def, note = '' } = pokemon;
 
@@ -20,6 +19,12 @@ function renderPokemonCard(pokemon, onRelease) {
   img.src = sprite;
   img.alt = name;
   img.className = 'h-16';
+  img.addEventListener('error', () => {
+    const fallback = document.createElement('span');
+    fallback.className = 'text-3xl text-forest/30';
+    fallback.textContent = '❓';
+    img.replaceWith(fallback);
+  }, { once: true });
 
   const nameLine = document.createElement('p');
   nameLine.className = 'font-name text-lg font-extrabold';
