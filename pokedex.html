@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokédex Diary — My Pokédex</title>
+    <title>My Pokédex</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -36,18 +37,32 @@
       .page-frame { background: #FBF6E9; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
       .card { background: #F6ECC9; border: 3px solid #C6A24A; border-radius: 14px; }
     </style>
-    <title>My Pokédex</title>
 </head>
 <body class="p-6 md:p-12 max-w-5xl mx-auto">
   <div class="page-frame">
 
-    <!-- heading -->
-    <header class="bg-cardcream border-b-2 border-gold px-8 py-6 flex items-center justify-between">
-      <h1 class="font-display text-xl md:text-2xl text-red">My Pokédex</h1>
-      <span id="caughtCount" class="font-name text-sm font-bold text-forest/60">0 caught</span>
+    <!-- navbar -->
+    <header class="bg-cardcream flex flex-row justify-between items-center pt-4 pb-4 pr-8 pl-8 border-b-2 border-gold">
+      <div class="text-2xl font-display text-red">POKÉDEX DIARY</div>
+      <nav>
+        <ul class="flex gap-6 font-name">
+          <li class="hover:text-red pb-1 border-b-2 border-transparent hover:border-red">
+            <a href="index.html">Homepage</a>
+          </li>
+          <li class="text-red pb-1 border-b-2 border-red">
+            <a href="pokedex.html">Pokédex</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main class="p-8 space-y-8">
+
+      <!-- heading -->
+      <div class="flex items-center justify-between">
+        <h1 class="font-display text-xl md:text-2xl text-red">My Pokédex</h1>
+        <span id="caughtCount" class="font-name text-sm font-bold text-forest/60">0 caught</span>
+      </div>
 
       <!-- favourite cards with notes -->
       <section id="pokedexGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
