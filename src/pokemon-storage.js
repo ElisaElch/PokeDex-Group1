@@ -20,6 +20,7 @@ function getCaughtPokemon() {                        // Returns the list of caug
   if (!raw) return [];                             // If nothing is stored, return an empty array
   return JSON.parse(raw);                        // Parse the JSON string into a JavaScript array and return it
 }
+
 function setCaughtPokemon(list) {                // Saves the list of caught Pokémon to localStorage as a JSON string.
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list));  // Convert the list to a JSON string and store it in localStorage
 }
@@ -36,4 +37,14 @@ function updatePokemonNote(id, note) {                   // Updates the note for
     pokemon.id === id ? { ...pokemon, note } : pokemon   // If the Pokémon's id matches, return a new object with the updated note; otherwise, return the original Pokémon object   
   );
   setCaughtPokemon(updated);                              // Save the updated list back to localStorage
+}
+/*
+ * Removes a single Pokémon from the caught list, identified by id,
+ * and persists the shortened list back to localStorage.
+ * @param {number} id - the Pokédex id of the Pokémon to release
+ */
+function releasePokemon(id) {
+  const caught = getCaughtPokemon();
+  const updated = caught.filter(pokemon => pokemon.id !== id);
+  setCaughtPokemon(updated);
 }

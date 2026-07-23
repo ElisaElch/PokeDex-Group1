@@ -1,14 +1,20 @@
 /**
  * pokemon-card.js
- * Builds a single Pokémon card showing image, name, stats, and an
- * editable note that persists to localStorage.
+ * Builds a single Pokémon card showing image, name, stats, an
+ * editable note, and a Release button.
  */
 
-function renderPokemonCard(pokemon) {
+function renderPokemonCard(pokemon, onRelease) {
   const { id, name, sprite, hp, atk, def, note = '' } = pokemon;
 
   const card = document.createElement('div');
-  card.className = 'card p-5 space-y-3';
+  card.className = 'card p-5 space-y-3 relative';
+
+  // --- favourite star (every card on this page is a favourite) ---
+  const star = document.createElement('span');
+  star.className = 'absolute top-4 right-4 text-gold text-lg';
+  star.textContent = '★';
+  card.appendChild(star);
 
   const img = document.createElement('img');
   img.src = sprite;
@@ -41,6 +47,15 @@ function renderPokemonCard(pokemon) {
     updatePokemonNote(id, noteInput.value);
   });
 
-  card.append(img, nameLine, statsLine, noteLabel, noteInput);
+  // --- release button ---
+  const releaseBtn = document.createElement('button');
+  releaseBtn.className = 'text-xs font-name font-bold text-red';
+  releaseBtn.textContent = 'Release';
+  releaseBtn.addEventListener('click', () => {
+    releasePokemon(id);
+    if (typeof onRelease === 'function') onRelease();
+  });
+
+  card.append(img, nameLine, statsLine, noteLabel, noteInput, releaseBtn);
   return card;
 }
