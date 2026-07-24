@@ -48,7 +48,15 @@ function catchPokemon (pokemon) {
     if (alreadyCaught){
         return;
     }
-    caught.push(pokemon);
+     caught.push({
+    id: pokemon.id,
+    name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1),
+    sprite: pokemon.sprites.front_default,
+    hp: pokemon.stats.find(s => s.stat.name === "hp").base_stat,
+    atk: pokemon.stats.find(s => s.stat.name === "attack").base_stat,
+    def: pokemon.stats.find(s => s.stat.name === "defense").base_stat,
+    note: "",
+  }); 
     localStorage.setItem("caughtPokemon", JSON.stringify(caught))
 }
 
