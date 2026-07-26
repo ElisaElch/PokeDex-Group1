@@ -46,23 +46,144 @@
       </nav>
     </header>
     <!-- header + nav bar with two elements -->
-    <!-- heading with a p-->
-    <!-- search bar -->
-    <main><section class="p-8">
-      <div id="pokemon-grid" class="grid grid-cols-4 gap-6"></div>
-      <template id="pokemon-card-template">
-        <div class="bg-(--color-cardcream) border-2 border-(--color-gold) rounded-2xl p-4">
-            <p class="text-xs" data-id></p>
-          <img class="w-full"/>
-          <p class="font-name text-lg" data-name></p>
-          <p class="font-body text-xs pb-3" data-stats></p>
-          <button data-catch-btn class="bg-gold text-forest w-full py-1 rounded-full text-sm">Catch!</button>
+    <!-- heading with a p -->
+
+    <!-- search bar start -->
+    
+    <!-- this has to be moved on Monday next week into main -->
+    <div class="text-center space-y-4 py-4">
+      <h1 class="font-display text-2xl md:text-3xl text-red">
+        Catch 'em & Log 'em
+      </h1>
+      <p class="font-body text-forest/60 text-sm">
+        Browse Pokémon, search for one by name or number, and catch your
+        favorites.
+      </p>
+
+      <!-- NEW: radio buttons -->
+      <div
+        class="flex justify-center gap-6 font-name text-xs font-bold text-forest/70 pt-2"
+      >
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="radio"
+            name="search-mode"
+            value="searchLocal"
+            checked
+            class="w-4 h-4 accent-red"
+          />
+          Search in below already loaded cards
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="radio"
+            name="search-mode"
+            value="searchWithPokeAPI"
+            class="w-4 h-4 accent-red"
+          />
+          Search directly in the PokeAPI
+        </label>
+      </div>
+
+      <div class="flex justify-center gap-2 max-w-md mx-auto pt-2">
+        <form id="SearchForm">
+          <input
+            id="searchInput"
+            type="text"
+            class="flex-1 bg-white/70 border-2 border-gold rounded-full px-4 py-2 text-sm font-body font-semibold"
+            placeholder="Search by name or Pokédex "
+          />
+          <button
+            class="bg-red text-cream px-5 py-2 rounded-full font-name text-sm font-bold shrink-0"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <dialog
+      id="myDialog"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cardcream border-4 border-gold rounded-2xl p-6 w-[90%] max-w-sm shadow-2xl [&::backdrop]:bg-forest/50 [&::backdrop]:backdrop-blur-sm"
+    >
+      <div>
+        <div class="card p-6 max-w-xs mx-auto space-y-3">
+          <p id="dialogResultMsg" class="font-name font-extrabold text-sm text-center"></p>
+          <div
+            class="h-20 bg-white/50 rounded-lg flex items-center justify-center"
+          >
+            <img id="dialogPokeImg"
+              src=""
+              class="h-35"
+            />
+          </div>
+          <p id = "dialogPokeName" class="font-name text-lg font-extrabold text-center"></p>
+          <button
+            id="closeBtn"
+            class="w-full bg-red text-cream py-2 rounded-full text-sm font-name font-bold"
+          >
+            Close
+          </button>
         </div>
-      </template>
-      <button id="load-more-btn" class="mt-6 mx-auto block bg-red text-cream px-6 py-2 rounded-full font-name">Load More</button>
-    </section>
-    </main><!-- cards  -->
+      </div>
+    </dialog>
+
+    <dialog
+      id="myDialogFailure"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cardcream border-4 border-gold rounded-2xl p-6 w-[90%] max-w-sm shadow-2xl [&::backdrop]:bg-forest/50 [&::backdrop]:backdrop-blur-sm"
+    >
+      <div>
+        <p
+          class="font-name text-xs uppercase tracking-wide text-forest/50 font-bold mb-3 text-center"
+        >
+          Search result dialog (opens on submit)
+        </p>
+        <div class="card p-6 max-w-xs mx-auto space-y-3">
+          <p id = "failerInputHeader" class="font-name font-extrabold text-dm text-center">
+          </p>
+          <p id = "failerInputMsg" class="font-name font-extrabold text-sm text-center">
+          </p>
+          <button
+            id="closeDialogFailureBtn"
+            class="w-full bg-red text-cream py-2 rounded-full text-sm font-name font-bold"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- search bar end -->
+
+    <main>
+      <section class="p-8">
+        <div id="pokemon-grid" class="grid grid-cols-4 gap-6"></div>
+        <template id="pokemon-card-template">
+          <div
+            class="bg-(--color-cardcream) border-2 border-(--color-gold) rounded-2xl p-4"
+          >
+            <p class="text-xs" data-id></p>
+            <img class="w-full" />
+            <p class="font-name text-lg" data-name></p>
+            <p class="font-body text-xs pb-3" data-stats></p>
+            <button
+              data-catch-btn
+              class="bg-gold text-forest w-full py-1 rounded-full text-sm"
+            >
+              Catch!
+            </button>
+          </div>
+        </template>
+        <button
+          id="load-more-btn"
+          class="mt-6 mx-auto block bg-red text-cream px-6 py-2 rounded-full font-name"
+        >
+          Load More
+        </button>
+      </section>
+    </main>
+    <!-- cards  -->
     <!-- footer -->
-    <script src="./src/main.js"></script>
+    <script type = "module" src="./src/main.js"></script>
   </body>
 </html>
