@@ -60,31 +60,6 @@
         favorites.
       </p>
 
-      <!-- NEW: radio buttons -->
-      <div
-        class="flex justify-center gap-6 font-name text-xs font-bold text-forest/70 pt-2"
-      >
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input
-            type="radio"
-            name="search-mode"
-            value="searchLocal"
-            checked
-            class="w-4 h-4 accent-red"
-          />
-          Search in below already loaded cards
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input
-            type="radio"
-            name="search-mode"
-            value="searchWithPokeAPI"
-            class="w-4 h-4 accent-red"
-          />
-          Search directly in the PokeAPI
-        </label>
-      </div>
-
       <div class="flex justify-center gap-2 max-w-md mx-auto pt-2">
         <form id="SearchForm">
           <input
@@ -114,7 +89,7 @@
           >
             <img id="dialogPokeImg"
               src=""
-              class="h-35"
+              class="h-20"
             />
           </div>
           <p id = "dialogPokeName" class="font-name text-lg font-extrabold text-center"></p>
