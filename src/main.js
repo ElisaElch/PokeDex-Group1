@@ -86,12 +86,9 @@ loadMoreBtn.addEventListener("click", loadNextBatch);
 // -------------- S E A R C H  -  S T A R T -----------------------
 //
 
-// const baseUrl = 'https://pokeapi.co/api/v2/';
 const searchForm = document.querySelector("#SearchForm");
 const dialog = document.getElementById("myDialog");
 const dialogFailure = document.getElementById("myDialogFailure");
-
-//console.log(dialog);
 
 /*
  * Makes an asynchronous search / fetch of
@@ -132,7 +129,6 @@ async function getPokemonByNameOrId(pokemonNameOrId) {
       "Nothing Found",
       `The Pokemon with ID or name '${pokemonNameOrId}' could not be found!`,
     );
-    //console.error(error);
   }
 }
 
@@ -171,23 +167,7 @@ searchForm.addEventListener("submit", async (e) => {
 
   if (!searchInputOk(searchInput)) return;
 
-  // radio buttons
-  const selected = document.querySelector('input[name="search-mode"]:checked');
-  console.log(selected.value); // "searchLocal" or "searchWithPokeAPI"
-
-  if (selected.value === "searchLocal") {
-    openFailure("Error", "Local search not yet implemented");
-    return;
-  } else if (selected.value === "searchWithPokeAPI") {
-    console.log("fetchDataFromPokeAPI if ", selected.value);
-    foundPokemon = await getPokemonByNameOrId(searchInput);
-  } else {
-    // this never happens the radios have a default selection. But anway, ho knows...
-    openFailure(
-      "Wrong Input",
-      "You have to select a radio button. (lokal of API)",
-    );
-  }
+  foundPokemon = await getPokemonByNameOrId(searchInput);
 
   if (!foundPokemon) {
     return;
@@ -214,18 +194,6 @@ document.getElementById("closeBtn").addEventListener("click", () => {
   dialog.close();
 });
 
-const fetchPogemonByUrl = async (url) => {
-  try {
-    console.log("Searched URL", url);
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 function showPokemon(foundPokemon) {
 
   document.getElementById("dialogResultMsg").textContent =
@@ -238,38 +206,6 @@ function showPokemon(foundPokemon) {
 
   dialog.showModal();
 }
-
-const fetchDataLocaly = (input) => {
-  /*
-  console.log("fetchDataLocaly reached");
-
-  let pokeName = "";
-  
-  for(let poke of allPokemonList) {
-
-    if(poke.name == input) {
-      pokeName = poke.name;
-      break;
-    }
-    
-  }
-
-  console.log("found poke name: ",pokeName);
-
-
-  const foundPokemon = allPokemonList.find((pokemon) => pokemon.name == input);
-
-  console.log("found pokemon" ,JSON.stringify(foundPokemon));
-
-  if(!foundPokemon) {
-    console.log("pokomon ",input,"notfound");
-  }
-
-  //const foundPokemonComplete =  fetchPogemonByUrl(foundPokemon.url);
-
-  return foundPokemonComplete;
-*/
-};
 
 //
 // -------------- S E A R C H  -  E N D -----------------------
