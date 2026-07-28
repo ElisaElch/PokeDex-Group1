@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+--color-gold: #c6a24a;
+--color-cream: #fbf6e9;
+--color-cardcream: #f6ecc9;
+--color-red: #c0272d;
+--color-redlt: #d8474d;
+--color-forest: #1e3a2b;
+--font-display: "Bungee", sans-serif;
+--font-name: "Baloo 2", sans-serif;
+--font-body: "Nunito", sans-serif;
+}
